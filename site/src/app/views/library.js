@@ -1,18 +1,19 @@
 // site/js/views/library.js
 
-var app = app || {};
-
 define(function(require) {
-    var   $	       = require('jquery')
-        , _        = require('underscore')
-        , Backbone = require('backbone');
+    var   _          = require('underscore')
+        , Backbone   = require('backbone')
+        , Library    = require('Library')
+        , BookView   = require('BookView')
+        , $          = require('jqueryui')
+        , dateformat = require('dateformat');
 
 
-    app.LibraryView = Backbone.View.extend({
+    var LibraryView = Backbone.View.extend({
         el: '#books',
 
         initialize: function( ) {
-            this.collection = new app.Library( );
+            this.collection = new Library();
             this.collection.fetch({reset: true});
             this.render();
 
@@ -59,10 +60,12 @@ define(function(require) {
         // render a book by creating a BookView and appending the
         // element it renders to the library's element
         renderBook: function( item ) {
-            var bookView = new app.BookView({
+            var bookView = new BookView({
                 model: item
             });
             this.$el.append( bookView.render().el );
         }
     });
+
+    return LibraryView;
 });

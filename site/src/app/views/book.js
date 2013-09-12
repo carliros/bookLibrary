@@ -1,13 +1,11 @@
 // site/js/views/book.js
 
-var app = app || {};
-
 define(function(require) {
     var   $	       = require('jquery')
         , _        = require('underscore')
         , Backbone = require('backbone');
 
-    app.BookView = Backbone.View.extend({
+    var BookView = Backbone.View.extend({
         tagName: 'div',
         className: 'bookContainer',
         template: _.template($('#bookTemplate').html()),
@@ -31,4 +29,6 @@ define(function(require) {
             return this;
         }
     });
+
+    return BookView;
 });

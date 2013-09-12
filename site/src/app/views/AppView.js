@@ -1,11 +1,9 @@
 define(function(require){
-    var $ = require('jquery')
-        AppView = require('AppView');
-
-    var app = app || {};
+    var $           = require('jqueryui')
+      , LibraryView = require('LibraryView');
 
     $(function() {
-        /*$( '#releaseDate' ).datepicker();*/
-        new app.LibraryView();
+        $( '#releaseDate' ).datepicker();
+        new LibraryView();
     });
 });

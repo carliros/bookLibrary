@@ -1,13 +1,11 @@
 // site/js/models/book.js
 
-var app = app || {};
-
 define(function(require) {
     var Backbone = require('backbone');
 
-    app.Book = Backbone.Model.extend({
+    var Book = Backbone.Model.extend({
         defaults: {
-            coverImage: '../../css/img/placeholder.png',
+            coverImage: 'src/css/img/placeholder.png',
             title: 'No title',
             author: 'Unknown',
             releaseDate: 'Unknown',
@@ -19,4 +17,6 @@ define(function(require) {
             return response;
         }
     });
+
+    return Book;
 });

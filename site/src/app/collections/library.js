@@ -1,12 +1,13 @@
 // site/js/collections/library.js
 
-var app = app || {};
-
 define(function(require) {
-    var Backbone = require('backbone');
+    var   Backbone = require('backbone')
+        , Book     = require('Book');
 
-    app.Library = Backbone.Collection.extend({
-        model: app.Book,
+    var Library = Backbone.Collection.extend({
+        model: Book,
         url: '/api/books'
     });
+
+    return Library;
 });
