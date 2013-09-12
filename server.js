@@ -54,10 +54,26 @@ var Book = new mongoose.Schema({
 //Models
 var BookModel = mongoose.model( 'Book', Book );
 
+
+////////////////////////////////////////////////////////////////
+// See Mongosee API: http://mongoosejs.com/docs/api.html
+////////////////////////////////////////////////////////////////
+
 //Get a list of all books
 app.get( '/api/books', function( request, response ) {
     return BookModel.find( function( err, books ) {
         if( !err ) {
+            return response.send( books );
+        } else {
+            return console.log( err );
+        }
+    });
+});
+
+//Filter a book
+app.post( '/api/filter', function( request, response ) {
+    return BookModel.find(request.body, function(err, books){
+        if( !err ){
             return response.send( books );
         } else {
             return console.log( err );
@@ -81,6 +97,7 @@ app.post( '/api/books', function( request, response ) {
         }
     });
     return response.send( book );
+
 });
 
 //Get a single book by id

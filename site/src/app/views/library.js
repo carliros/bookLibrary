@@ -22,7 +22,8 @@ define(function(require) {
         },
 
         events:{
-            'click #add':'addBook'
+              'click #add'   :'addBook'
+            , 'click #filter': 'filterBooks'
         },
 
         addBook: function( e ) {
@@ -48,6 +49,41 @@ define(function(require) {
             });
 
             this.collection.create( formData );
+        },
+
+        filterBooks: function ( e ){
+            e.preventDefault();
+
+            var formData = {};
+
+            $( '#addBook div' ).children( 'input' ).each( function( i, el ) {
+                if( $( el ).val() != '' ){
+                    if( el.id === 'keywords' ) {
+                        formData[ el.id ] = [];
+                        _.each( $( el ).val().split( ' ' ), function( keyword ) {
+                            formData[ el.id ].push({ 'keyword': keyword });
+                        });
+                    } else if( el.id === 'releaseDate' ) {
+                        formData[ el.id ] = $( '#releaseDate' ).datepicker( 'getDate' ).getTime();
+                    } else {
+                        formData[ el.id ] = $( el ).val();
+                    }
+                }
+                // Clear input field value
+                $( el ).val('');
+            });
+
+            var books = this.collection.fetch(
+                    { data: formData
+                    , type: 'POST'
+                    , success: function(d){
+                        console.log('fetch success');
+                    }});
+
+            console.log(formData);
+            console.log(books);
+
+            this.collection.reset(books);
         },
 
         // render library by rendering each book in its collection
