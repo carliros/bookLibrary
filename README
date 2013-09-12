@@ -1,1 +1,9 @@
 This example is from the book Backbone fundamentals.
+
+Deploy app
+----------
+* Download node.js and mongodb
+* Setup project with on root directory: npm install
+* Start mongodb with: mongod --dbpath data/db
+* Start node.js on root directory with: node server.js
+* Listen on your browser on: http://localhost:4711
