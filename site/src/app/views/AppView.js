@@ -3,7 +3,7 @@ define(function(require){
       , LibraryView = require('LibraryView');
 
     $(function() {
-        $( '#releaseDate' ).datepicker();
+        $('#releaseDate').datepicker();
         new LibraryView();
     });
 });

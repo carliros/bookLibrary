@@ -1,8 +1,7 @@
 // site/js/views/book.js
 
 define(function(require) {
-    var   $	       = require('jquery')
-        , _        = require('underscore')
+    var   _        = require('underscore')
         , Backbone = require('backbone');
 
     var BookView = Backbone.View.extend({
