@@ -8,6 +8,7 @@ require.config({
 		, text          : '../vendor/text/2.0.1/text'
 		, backbone      : '../vendor/backbone/1.0.0/backbone'
 		, underscore    : '../vendor/underscore/1.5.1/underscore'
+        , backgrid      : '../vendor/backgrid/0.2.6/backgrid'
 
 		, init			: '../src/app/init'
         , AppView	    : '../src/app/views/AppView'
@@ -30,6 +31,10 @@ require.config({
         }
         , 'dateformat': {
             deps: ['jquery']
+        }
+        , 'backgrid': {
+              deps: ['jquery', 'underscore', 'backbone']
+            , exports: 'Backgrid'
         }
 	}
 });

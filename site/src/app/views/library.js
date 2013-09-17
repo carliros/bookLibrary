@@ -3,6 +3,7 @@
 define(function(require) {
     var   _          = require('underscore')
         , Backbone   = require('backbone')
+        , Backgrid   = require('backgrid')
         , Library    = require('Library')
         , BookView   = require('BookView')
         , $          = require('jqueryui')
@@ -14,6 +15,32 @@ define(function(require) {
 
         initialize: function( ) {
             this.collection = new Library();
+
+            var columns = [{
+                name: "title",
+                label: "Title",
+                editable: false,
+                cell: "string"
+            }, {
+                name: "author",
+                label: "Author",
+                editable: false,
+                cell: "string"
+            }, {
+                name: "releaseDate",
+                label: "Release date",
+                cell: "date"
+            }];
+
+            // Initialize a new Grid instance
+            var grid = new Backgrid.Grid({
+                columns: columns,
+                collection: this.collection
+            });
+
+            // Render the grid and attach the root to your HTML document
+            $("#tableexample").append(grid.render().$el);
+
             this.collection.fetch({reset: true});
             this.render();
 
