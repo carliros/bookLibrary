@@ -9,6 +9,7 @@ require.config({
 		, backbone      : '../vendor/backbone/1.0.0/backbone'
 		, underscore    : '../vendor/underscore/1.5.1/underscore'
         , backgrid      : '../vendor/backgrid/0.2.6/backgrid'
+        , json2         : '../vendor/json2/json2'
 
 		, init			: '../src/app/init'
         , AppView	    : '../src/app/views/AppView'
@@ -35,6 +36,9 @@ require.config({
         , 'backgrid': {
               deps: ['jquery', 'underscore', 'backbone']
             , exports: 'Backgrid'
+        }
+        , 'json2': {
+            exports: 'JSON'
         }
 	}
 });

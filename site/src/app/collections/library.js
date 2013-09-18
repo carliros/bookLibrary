@@ -6,7 +6,13 @@ define(function(require) {
 
     var Library = Backbone.Collection.extend({
         model: Book,
-        url: '/api/books'
+        url: '/api/books',
+        parse: function( response ) {
+            console.log('Collection -> ');
+            console.log(response);
+            return response;
+        }
+
     });
 
     return Library;

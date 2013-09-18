@@ -13,6 +13,8 @@ define(function(require) {
         },
 
         parse: function( response ) {
+            console.log('Model -> ');
+            console.log(response);
             response.id = response._id;
             return response;
         }
