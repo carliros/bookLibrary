@@ -2,28 +2,89 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
-        <title>Backbone.js Library</title>
+        <title>Book Library</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" href="src/css/booklibrary.css" rel="stylesheet"/>
         <script type="text/javascript" src="vendor/require/2.0.6/require.js" data-main="src/main"></script>
     </head>
     <body>
-        <div id="books">
-            <form id="addBook" action="#">
-                <div>
-                    <h2>Book fields</h2>
-                    <label for="coverImage">CoverImage: </label><input id="coverImage" type="file" />
-                    <label for="title">Title: </label><input id="title" type="text" />
-                    <label for="author">Author: </label><input id="author" type="text" />
-                    <label for="releaseDate">Release date: </label><input id="releaseDate" type="text" />
-                    <label for="keywords">Keywords: </label><input id="keywords" type="text" />
-                    <button id="add">Add</button>
-                </div>
-            </form>
+        <div class="container">
+
+            <div class="masthead">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            
+                <h3 class="muted">Book Library</h3>
+            </div>
+
+            <hr>
+
+            <div id="books" class="jumbotron">
+                <h1>Book fields</h1>
+                <form id="addBook" class="form-horizontal" action="#">
+                    <div>
+                        <div class="control-group">
+                            <label class="control-label" for="coverImage">CoverImage: </label>
+                            <div class="controls">
+                                <input id="coverImage" type="file" />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="title">Title: </label>
+                            <div class="controls">
+                                <input id="title" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="author">Author: </label>
+                            <div class="controls">
+                                <input id="author" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="releaseDate">Release date: </label>
+                            <div class="controls">
+                                <input id="releaseDate" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="keywords">Keywords: </label>
+                            <div class="controls">
+                                <input id="keywords" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <div class="controls">
+                                <button class="btn btn-large btn-success" id="add">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <hr>
+
+            <div id="tableexample" class="row-fluid marketing">
+                <h1>Book list</h1>
+
+            </div>
+
+            <hr>
+
+            <div class="footer">
+                <p>&copy; Carlos Gomez, 2013</p>
+            </div>
 
         </div>
-        <div id="tableexample">
 
-        </div>
         <script id="bookTemplate" type="text/template">
             <img src="<%= coverImage %>"/>
             <ul>
