@@ -1,5 +1,6 @@
 define(function(require){
-    var $           = require('jqueryui')
+    var $           = require('jquery')
+      , JQueryUI    = require('jqueryui')
       , LibraryView = require('LibraryView');
 
     $(function() {

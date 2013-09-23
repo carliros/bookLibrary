@@ -1,14 +1,13 @@
 // site/js/views/library.js
 
 define(function(require) {
-    var   _          = require('underscore')
+    var   $          = require('jquery')
+        , _          = require('underscore')
         , Backbone   = require('backbone')
         /*, Backgrid   = require('backgrid')*/
-        , SlickGrid  = require('slickGrid')
         , recline    = require('recline')
         , Library    = require('Library')
         , BookView   = require('BookView')
-        , $          = require('jqueryui')
         , dateformat = require('dateformat');
 
 

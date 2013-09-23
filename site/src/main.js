@@ -4,7 +4,8 @@ require.config({
 		  jquery        : '../vendor/jquery/1.9.1/jquery'
 		, jquery1_7     : '../vendor/slickgrid/2.0.2/lib/jquery-1.7.min'
         , dateformat    : '../vendor/jquery/plugins/jquery.dateFormat/1.0/jquery.dateFormat'
-		, jqueryui      : '../vendor/slickgrid/2.0.2/lib/jquery-ui-1.8.16.custom.min'
+		, 'jqueryui1.6.16' : '../vendor/slickgrid/2.0.2/lib/jquery-ui-1.8.16.custom.min'
+        , jqueryui      : '../vendor/jquery/plugins/jquery-ui/1.10.3/jquery-ui'
 		, handlebars    : '../vendor/handlebars/1.0.0/handlebars'
 		, text          : '../vendor/text/2.0.1/text'
 		, backbone      : '../vendor/backbone/1.0.0/backbone'
@@ -17,7 +18,8 @@ require.config({
         , slickDV       : '../vendor/slickgrid/2.0.2/slick.dataview'
         , slickGrid     : '../vendor/slickgrid/2.0.2/slick.grid'
         , jqueryEventDrop: '../vendor/slickgrid/2.0.2/lib/jquery.event.drop-2.0.min' 
-        , jqueryEventDrag: '../vendor/slickgrid/2.0.2/lib/jquery.event.drag-2.0.min'
+        , 'jqueryEventDrag-2.0': '../vendor/slickgrid/2.0.2/lib/jquery.event.drag-2.0.min'
+        , 'jqueryEventDrag-2.2': '../vendor/jquery/plugins/jquery.event.drag/2.2/jquery.event.drag-2.2'
 
 		, init			: '../src/app/init'
         , AppView	    : '../src/app/views/AppView'
@@ -30,42 +32,42 @@ require.config({
 		  'underscore' : {
 			exports: '_'
 		}
+        , 'jquery': {
+            exports: '$'
+        }
         , 'backbone' : {
-			  deps: ['jquery1_7']
+			  deps: ['jquery']
 			, exports: 'Backbone'
 		}
         , 'jqueryui': {
-              deps: ['jquery1_7']
-            , exports: '$'
+              deps: ['jquery']
         }
         , 'dateformat': {
-            deps: ['jquery1_7']
+            deps: ['jquery']
         }
         /*, 'backgrid': {
               deps: ['jquery', 'underscore', 'backbone']
             , exports: 'Backgrid'
         }*/
-        , 'jqueryEventDrop': {
-            deps: ['jquery1_7']
-        }
-        , 'jqueryEventDrag': {
-            deps: ['jquery1_7']
+        , 'jqueryEventDrag-2.2': {
+            deps: ['jquery']
+            , exports: 'drag'
         }
         , 'slickCore': {
-            deps: ['jquery1_7', 'jqueryui', 'jqueryEventDrop', 'jqueryEventDrag', 'underscore']
+            deps: ['jquery', 'jqueryui', 'jqueryEventDrag-2.2', 'underscore']
         }
         , 'slickGrid': {
-            deps: ['slickCore']
+            deps: ['slickCore', 'jqueryEventDrag-2.2']
         } 
         , 'bootstrap': {
-            deps: ['jquery1_7']
+            deps: ['jquery']
         }
         , 'recline': {
-              deps: ['jquery1_7', 'underscore', 'backbone', 'bootstrap', 'mustache']
+              deps: ['jquery', 'underscore', 'slickGrid', 'backbone', 'bootstrap', 'mustache']
             , exports: 'recline'
         }
         , 'mustache': {
-            deps: ['jquery1_7']
+            deps: ['jquery']
         }
 	}
 });
