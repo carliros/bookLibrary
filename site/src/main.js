@@ -20,6 +20,7 @@ require.config({
         , jqueryEventDrop: '../vendor/slickgrid/2.0.2/lib/jquery.event.drop-2.0.min' 
         , 'jqueryEventDrag-2.0': '../vendor/slickgrid/2.0.2/lib/jquery.event.drag-2.0.min'
         , 'jqueryEventDrag-2.2': '../vendor/jquery/plugins/jquery.event.drag/2.2/jquery.event.drag-2.2'
+        , slickBack     : '../vendor/slickback/0.3.1/slickback'
 
 		, init			: '../src/app/init'
         , AppView	    : '../src/app/views/AppView'
@@ -65,6 +66,10 @@ require.config({
         , 'recline': {
               deps: ['jquery', 'underscore', 'slickGrid', 'backbone', 'bootstrap', 'mustache']
             , exports: 'recline'
+        }
+        , 'slickBack': {
+            deps: ['slickCore']
+            , exports: 'Slickback'
         }
         , 'mustache': {
             deps: ['jquery']

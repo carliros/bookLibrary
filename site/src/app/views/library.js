@@ -5,7 +5,9 @@ define(function(require) {
         , _          = require('underscore')
         , Backbone   = require('backbone')
         /*, Backgrid   = require('backgrid')*/
-        , recline    = require('recline')
+        /*, recline    = require('recline')*/
+        , Slickback  = require('slickBack')
+        , slickGrid  = require('slickGrid')
         , Library    = require('Library')
         , BookView   = require('BookView')
         , dateformat = require('dateformat');
@@ -14,7 +16,7 @@ define(function(require) {
     var LibraryView = Backbone.View.extend({
         el: '#books',
 
-        initialize: function( ) {
+        initialize: function( initializationOpts ) {
             this.collection = new Library();
 
             /*
@@ -44,6 +46,7 @@ define(function(require) {
             $("#tableexample").append(grid.render().$el);
             */
 
+            /*
             var data = [ {id: 0, date: '2011-01-01', x: 1, y: 2, z: 3, country: 'DE', geo: {lat:52.56, lon:13.40} },
                          {id: 1, date: '2011-02-02', x: 2, y: 4, z: 24, country: 'UK', geo: {lat:54.97, lon:-1.60}},
                          {id: 2, date: '2011-03-03', x: 3, y: 6, z: 9, country: 'US', geo: {lat:40.00, lon:-75.5}},
@@ -62,7 +65,73 @@ define(function(require) {
                 el: $el
             });
             grid.visible = true;
-            grid.render();
+            grid.render();*/
+
+
+            var bookColumns = [
+                {
+                    id:       'id',
+                    name:     'ID',
+                    field:    'id',
+                    sortable: true,
+                    width:    120
+                },
+                {
+                    id:       'title',
+                    name:     'Title',
+                    field:    'title',
+                    width:    150,
+                    editable: true,
+                    editor:   Slickback.TextCellEditor
+                }
+            ];
+
+
+
+            //this.pager  = initializationOpts.pager;
+
+            /*var gridOptions = _.extend({},{
+                editable:         true,
+                formatterFactory: Slickback.BackboneModelFormatterFactory
+            },initializationOpts.grid);
+
+*/
+            var gridOptions = {
+                formatterFactory: Slickback.BackboneModelFormatterFactory
+            };
+
+            var collection = this.collection;
+            var $el = $('#tableexample');
+
+            var grid =
+                new Slick.Grid($el,collection,bookColumns,gridOptions);
+            /*var pager =
+                new Slick.Controls.Pager(collection,grid,this.pager);*/
+
+            grid.onSort.subscribe(function(e, msg) {
+                collection.extendScope({
+                    order:     msg.sortCol.field,
+                    direction: (msg.sortAsc ? 'ASC' : 'DESC')
+                });
+                collection.fetchWithScope(); // NOTE: resetting pagination
+            });
+
+            collection.bind('change',function(model,attributes) {
+                model.save();
+            });
+
+            collection.onRowCountChanged.subscribe(function() {
+                grid.updateRowCount();
+                grid.render();
+            });
+
+            collection.onRowsChanged.subscribe(function() {
+                grid.invalidateAllRows();
+                grid.render();
+            });
+
+            collection.fetch({reset: true});
+
 
             //this.collection.fetch({reset: true});
             /*this.render();*/

@@ -2,9 +2,10 @@
 
 define(function(require) {
     var   Backbone = require('backbone')
+        , Slickback = require('slickBack')
         , Book     = require('Book');
 
-    var Library = Backbone.Collection.extend({
+    var Library = Slickback.Collection.extend({
         model: Book,
         url: '/api/books',
         parse: function( response ) {
